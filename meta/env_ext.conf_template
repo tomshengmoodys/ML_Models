@@ -1,0 +1,5 @@
+#installation commands for additional R libraries - sample below
+RUN R --no-save -e "install.packages(c('argparser', 'XML', 'plyr', 'magrittr'))"
+
+#installation commands for addtional python packages - sample below
+RUN pip install scipy scikit-learn

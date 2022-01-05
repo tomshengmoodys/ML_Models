@@ -1,0 +1,61 @@
+{
+  "name": "Starter model name",
+  "description": "Starter model Description",
+  "apiType": "ManagedBatch",
+  "outputTypes": [
+    "PD"
+  ],
+  "outputFrequency": "Annual",
+  "isConditional": false,
+  "applicationConsumers": [
+    "ImpairmentStudio"
+  ],
+  "projectName": "My_Starter_Model",
+  "version": {
+    "name": "3.0.0",
+    "validationStatus": "Draft",
+    "validUntil": "2022-01-02",
+    "url": "{DOMINO_WORKSPACE_URL}/cap-model-starter",
+    "accessKey": "{DOMINO_ACCESS_KEY}",
+    "mainFile": "/repos/cap-model-starter/cap/model/run.py",
+    "isActive": true,
+    "isLatest": true,
+    "datasets": {
+      "supportBuiltInScenario": false,
+      "supportCustomScenario": false,
+      "inputData": [
+        {
+          "category": "instrumentReference",
+          "attributes": [
+            "instrumentidentifier",
+            "borrowerState",
+            "TTCAnnualizedPDOneYear",
+            "privateFirmModelName",
+            "moodysIndustrySector",
+            "primaryIndustryNAICS"
+          ]
+        }
+      ],
+      "outputData": [
+        {
+          "category": "instrumentError",
+          "attributes": [
+            "instrumentIdentifier",
+            "errorCode",
+            "errorMessage",
+            "moduleCode"
+          ]
+        },
+        {
+          "category": "instrumentRiskMetric",
+          "attributes": [
+            "annualizedcumulativepd",
+            "instrumentIdentifier",
+            "term"
+          ]
+        }
+      ],
+      "settings": []
+    }
+  }
+}

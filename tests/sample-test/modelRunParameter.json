@@ -1,0 +1,158 @@
+{
+  "name": "sample-test-case",
+  "datasets": {
+    "inputData": [
+      {
+        "category": "instrumentReference",
+        "attributes": [
+          "portfolioidentifier",
+          "loanpropertygroupidentifier",
+          "loanpropertygroupdescription",
+          "asofdate",
+          "reportingdate",
+          "instrumentidentifier",
+          "description",
+          "originationdate",
+          "maturitydate",
+          "ownershipportion",
+          "unpaidprincipalbalance",
+          "interestratetype",
+          "fixedrate",
+          "interestrateindex",
+          "interestratespread",
+          "lifetimeinterestratefloor",
+          "lifetimeinterestratecap",
+          "interestrateresetfrequency",
+          "interestratetypechangedate",
+          "interestrateresetfirstdate",
+          "amortizationstartdate",
+          "amortizationenddate",
+          "cashreserves",
+          "lienposition",
+          "userefinancegrid",
+          "delinquencystatus",
+          "propertyidentifier",
+          "propertydescription",
+          "propertytype",
+          "propertystatus",
+          "propertycompletiondate",
+          "collateralstate",
+          "collateralzipcode",
+          "collateralvalue",
+          "netoperatingincome",
+          "collateralvaluedate",
+          "netoperatingincomedate",
+          "loantovalue",
+          "debtservicecoverageratio",
+          "loantovaluedate",
+          "debtservicecoverageratiodate",
+          "marketindexvolatilityfactor",
+          "dispersionvolatilityfactor",
+          "transactionvolatilityfactor",
+          "amortizationtype",
+          "cashflowtype",
+          "foreclosed",
+          "creditimpaired",
+          "analysisidentifier",
+          "ascimpairmentevaluation",
+          "amortizedcostoverride",
+          "instrumentcurrency",
+          "instrumenttype",
+          "instrumentsubtype",
+          "lossdiscountrate",
+          "interestpaymentfrequency",
+          "amortizationfrequency"
+        ]
+      },
+      {
+        "category": "propertyReference",
+        "attributes": [
+          "loanPropertyGroupIdentifier",
+          "portfolioIdentifier",
+          "asOfDate",
+          "propertyIdentifier",
+          "propertyDescription",
+          "propertyType",
+          "propertyStatus",
+          "propertyCompletionDate",
+          "collateralState",
+          "collateralZipCode",
+          "collateralValue",
+          "netOperatingIncome",
+          "collateralValueDate",
+          "netOperatingIncomeDate",
+          "loanToValue",
+          "debtServiceCoverageRatio",
+          "loantoValueDate",
+          "debtServiceCoverageRatioDate",
+          "marketIndexVolatilityFactor", 
+          "dispersionVolatilityFactor", 
+          "transactionVolatilityFactor",
+          "analysisidentifier",
+          "reportingdate"
+        ]
+      }
+    ],
+    "supportingData": [{
+        "category": "macroeconomicVariableInput",
+        "attributes": [
+          "scenarioIdentifier",
+          "valueDate",
+          "macroeconomicVariableValue",
+          "modelFactor"
+        ]
+      }
+    ],
+    "outputData": [
+      {
+        "category": "instrumentError",
+        "attributes": [
+          "analysisIdentifier",
+          "instrumentIdentifier",
+          "portfolioIdentifier",
+          "scenarioIdentifier",
+          "errorCode",
+          "errorMessage",
+          "moduleCode"
+        ]
+      },
+      {
+        "category": "instrumentRiskMetric",
+        "attributes": [
+          "analysisidentifier",
+          "annualizedcumulativepd",
+          "asOfDate",
+          "instrumentIdentifier",
+          "inputScenarioIdentifier",
+          "lgd",
+          "ead",
+          "modelname",
+          "modeloutput",
+          "reportingdate",
+          "scenarioIdentifier",
+          "term",
+          "maturityRiskPD",
+          "maturityRiskLGD"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "runDate": "2017-12-31",
+    "reportingDate": "2017-12-31",
+    "scenarios": [
+      {
+        "name": "BASE",
+        "asOfDate": "2018-03-30",
+        "weight": 1
+      }
+    ],
+    "inputPath": "model-intg/cap-model-starter/sample-test/input_csv",
+    "logPath": "model-intg/cap-model-starter/sample-test/log",
+    "outputPaths": {
+      "instrumentReference": "model-intg/cap-model-starter/sample-test/output/instrumentReference",
+      "instrumentRiskMetric": "model-intg/cap-model-starter/sample-test/output/instrumentRiskMetric",
+      "instrumentError": "model-intg/cap-model-starter/sample-test/output/instrumentError"
+    }
+  }
+}

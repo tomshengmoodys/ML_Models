@@ -1,0 +1,38 @@
+<Root>
+	<IndustryCodeMapping>
+    <Classification Name="SIC">      
+      <Code Name="5511" Ndy="N16" Sector="Auto" Description=""/>
+      <Code Name="5521" Ndy="N16" Sector="Auto" Description=""/>
+      <Code Name="5561" Ndy="N16" Sector="Other" Description=""/>
+      <Code Name="5571" Ndy="N16" Sector="Other" Description=""/>
+      <Code Name="5551" Ndy="N16" Sector="Other" Description=""/>
+      <Code Name="5599" Ndy="N16" Sector="Auto" Description=""/>
+    </Classification>
+    <Classification Name="NAICS">
+      <Code Name="441000" Ndy="N16" Sector="Auto" Description="Motor Vehicle and Parts Dealers"/>
+      <Code Name="441100" Ndy="N16" Sector="Auto" Description="Automobile Dealers"/>
+      <Code Name="441110" Ndy="N16" Sector="Auto" Description="New Car Dealers"/>
+      <Code Name="441120" Ndy="N16" Sector="Auto" Description="Used Car Dealers"/>
+      <Code Name="441200" Ndy="N16" Sector="Auto" Description="Other Motor Vehicle Dealers"/>
+      <Code Name="441210" Ndy="N16" Sector="Other" Description="Recreational Vehicle Dealers"/>
+      <Code Name="441220" Ndy="N16" Sector="Auto" Description="Motorcycle, Boat, and Other Motor Vehicle Dealers"/>
+      <Code Name="441221" Ndy="N16" Sector="Other" Description="Motocycle, ATV, and Personal Watercraft Dealers"/>
+      <Code Name="441222" Ndy="N16" Sector="Other" Description="Boat Dealers"/>
+      <Code Name="441229" Ndy="N16" Sector="Auto" Description="All Other Motor Vehicle Dealer"/>
+    </Classification>
+    <Classification Name="NAICS2012">
+      <Code Name="441110" Sector="Auto" Description="New Car Dealers"/>
+      <Code Name="441120" Sector="Auto" Description="Used Car Dealers"/>
+      <Code Name="441210" Sector="Other" Description="Recreational Vehicle Dealers"/>
+      <Code Name="441222" Sector="Other" Description="Motorcycle, ATV, and All Other Motor Vehicle Dealers"/>
+      <Code Name="441228" Sector="Other" Description="Boat Dealers"/>
+    </Classification>
+	  <!--<Classification Name="NAICS2017">
+	    <Code Name="441110" Ndy="N32" Sector="Auto" Description="New Car Dealers" />
+	    <Code Name="441120" Ndy="N32" Sector="Auto" Description="Used Car Dealers" />
+	    <Code Name="441210" Ndy="N32" Sector="Other" Description="Recreational Vehicle Dealers" />
+	    <Code Name="441222" Ndy="N32" Sector="Other" Description="Boat Dealers" />
+	    <Code Name="441228" Ndy="N32" Sector="Other" Description="Motorcycle, ATV, and All Other Motor Vehicle Dealers" />
+	  </Classification>-->
+  </IndustryCodeMapping>
+</Root>

@@ -1,0 +1,11 @@
+loanpropertygroupidentifier,portfolioidentifier,analysisidentifier,reportingdate,asofdate,propertyidentifier,propertydescription,propertytype,propertystatus,propertycompletiondate,collateralstate,collateralzipcode,collateralvalue,netoperatingincome,collateralvaluedate,netoperatingincomedate,loantovalue,debtservicecoverageratio,loantovaluedate,debtservicecoverageratiodate,marketindexvolatilityfactor,dispersionvolatilityfactor,transactionvolatilityfactor
+Group1,CMM_1,,2018-03-31,2018-03-31,Property001,,Office,Existing,,,7450,5894622.0,12563.0,2001-01-01,2001-01-01,,,,,,,
+Group1,CMM_1,,2018-03-31,2018-03-31,Property002,,Retail,Existing,,,90280,58974.0,4589.0,2001-01-01,2001-01-01,,,,,,,
+Group2,CMM_1,,2018-03-31,2018-03-31,Property003,,Hotel,Existing,,,94133,236985.0,12569.0,2001-01-01,2001-01-01,,,,,,,
+Group2,CMM_1,,2018-03-31,2018-03-31,Property004,,Retail,Existing,,,90065,745125.0,4596.0,2001-01-01,2001-01-01,,,,,,,
+Group3,CMM_1,,2018-03-31,2018-03-31,Property005,,Retail,Existing,,,90006,25169.0,125.0,2001-01-01,2001-01-01,,,,,,,
+Group4,CMM_1,,2018-03-31,2018-03-31,Property006,,Industrial,Existing,,,90501,45789562.0,74652.0,2001-01-01,2001-01-01,,,,,2.0,2.0,2.0
+Group4,CMM_1,,2018-03-31,2018-03-31,Property007,,Retail,Existing,,,90065,8436975.0,5694.0,2001-01-01,2001-01-01,,,,,,,
+Group4,CMM_1,,2018-03-31,2018-03-31,Property008,,Industrial,Existing,,,7071,7894236.0,58953.0,2001-01-01,2001-01-01,,,,,3.0,3.0,3.0
+Group4,CMM_1,,2018-03-31,2018-03-31,Property009,,Retail,Existing,,,90065,125489.0,6325.0,2001-01-01,2001-01-01,,,,,,,
+Group4,CMM_1,,2018-03-31,2018-03-31,Property010,,Office,Existing,,,94709,3456702.0,56900.0,2001-01-01,2001-01-01,,,,,,,

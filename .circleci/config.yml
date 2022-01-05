@@ -1,0 +1,124 @@
+version: 2.1
+
+# executors definition: pull base image with cappy pre-installed from ECR
+executors:
+  model_executor:
+    parameters:
+      account_id:
+        type: string
+      account_region:
+        type: string
+      account_env:
+        type: string
+      aws_access_key_id:
+        type: string
+      aws_secret_access_key:
+        type: string
+    docker:
+      - image: << parameters.account_id >>.dkr.ecr.<< parameters.account_region >>.amazonaws.com/<< parameters.account_env >>/moodysanalytics/cappy:latest
+        aws_auth:
+          aws_access_key_id: << parameters.aws_access_key_id >>
+          aws_secret_access_key: << parameters.aws_secret_access_key >>
+    working_directory: ~/repo
+
+commands:
+  run_regression_tests:
+    description: "run regression tests in model repo, store test status, and upload xml report to CircleCI"
+    # reference https://circleci.com/docs/2.0/env-vars/ under "Using BASH_ENV to Set Environment Variables"
+    steps:
+      - run:
+          name: Run regression and unit tests
+          command: |
+            echo "Running model regression tests..."
+            pytest -v --junitxml=test-results/junit/report.xml
+            regression_status=$?
+            if [ $regression_status == 0 ]; then
+               echo "All tests passed. Proceeding to deployment"
+               echo 'export passed_regression=true' >> $BASH_ENV
+               source $BASH_ENV
+               echo "passed_regression is now set to $passed_regression"
+            else
+              echo "Tests exited with non-zero status. Skipping deployment"
+            fi
+      - store_test_results:
+          path: test-results
+
+  clone_cap_admin_cli:
+    description: "clone cap-admin-cli github repo"
+    steps:
+      - run:
+         command: |
+           echo "Cloning cap-admin-cli github repo"
+           git clone git@github.com:moodysanalytics/cap-admin-cli.git
+
+  update_env:
+    description: "Update the environment variables in local.ini for the correct environment"
+    steps:
+      - run:
+          name: Overwrite environment configuration with correct environment variables
+          command: |
+            python cap-admin-cli/util/updateEnvConfig.py -b $CIRCLE_BRANCH -c $PWD/config
+            git config user.email $MOODYS_CAP_GITHUB_EMAIL
+            git config user.name $MOODYS_CAP_GITHUB_USER
+            git add $PWD/config/local.ini
+            git commit --allow-empty -m "[skip ci] Update environment configuration for branch"
+            git push -q https://$MOODYS_CIRCLECI_PAT@github.com/moodysanalytics/${CIRCLE_PROJECT_REPONAME}.git $CIRCLE_BRANCH
+
+  update_model_registry:
+    description: "Update or create a model version in CAP registry"
+    steps:
+      - run:
+          name: Create new model version
+          command: |
+            echo "TODO- Create new model version"
+
+jobs:
+  # read passed_regression from $BASH_ENV as env_var (which is persisted and share by all shells) and pass it as parameter to each job definition.
+  test:
+    executor:
+      name: model_executor
+      account_env: "qa"
+      account_id: $SI_NPRD_ACCOUNT_ID
+      account_region: $SI_NPRD_ACCOUNT_REGION
+      aws_access_key_id: $SI_NPRD_ACCESS_KEY_ID
+      aws_secret_access_key: $SI_NPRD_SECRET_ACCESS_KEY
+    steps:
+      - checkout
+      - run_regression_tests
+
+  deploy:
+    executor:
+      name: model_executor
+      account_env: "qa" # TODO: Map branch name to env?
+      account_id: $SI_NPRD_ACCOUNT_ID
+      account_region: $SI_NPRD_ACCOUNT_REGION
+      aws_access_key_id: $SI_NPRD_ACCESS_KEY_ID
+      aws_secret_access_key: $SI_NPRD_SECRET_ACCESS_KEY
+    environment:
+      deploy_mode: REPLACE_VERSION_BY_NAME
+    steps:
+      - checkout
+      - clone_cap_admin_cli
+      - update_env
+      - update_model_registry
+
+workflows:
+  version: 2.1
+  test_and_deploy:
+    jobs:
+      - test:
+          context: ers-rafa-ci
+      - deploy:
+          context: ers-rafa-ci
+          requires: 
+            - test
+          filters:
+            branches:
+              only:
+                - prd
+                - release
+                - master
+                - qa
+                - ci
+                - ea
+                - demo
