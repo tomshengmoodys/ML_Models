@@ -1,6 +1,6 @@
 # CAP Model Starter
 
-#####
+########
 
 This repository is an example model to help with standardization of Moody's internal CAP models. The basic boilerplate and framework code is included to get you started quickly. This model includes an example R script which will be called by the Python wrapper, and demonstrates proper ImpairmentStudio-style file I/O.
 
